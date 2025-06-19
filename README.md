@@ -68,6 +68,10 @@ The original CHIP-8 had a hexadecimal keypad (0–9, A–F). The key mapping in 
 | `E`        | `F`          |
 | `F`        | `V`          |
 
+## Resources
+
+- [Cowgod's Chip-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM) — Used for the specification and implementation of the 35 Chip-8 instructions and general Chip-8 architecture.
+- [How to write an emulator (CHIP-8 interpreter) by multigesture.net](https://multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/) — Referenced for instruction implementation and main loop structure.
 
 ## License
 
