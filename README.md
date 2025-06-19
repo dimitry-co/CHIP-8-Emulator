@@ -8,11 +8,11 @@ This is a simple CHIP-8 emulator written in C++. CHIP-8 is an interpreted progra
 
 ### INVADERS
 
-![alt text](screenshots/invaders.png "INVADERS in Chip 8")
+![alt text](https://raw.githubusercontent.com/dimitry-co/CHIP-8-Emulator/refs/heads/main/screenshots/invaders.png "INVADERS in Chip 8")
 
 ### BRIX
 
-![alt text](screenshots/brix.png "BRIX in Chip 8")
+![alt text](https://raw.githubusercontent.com/dimitry-co/CHIP-8-Emulator/refs/heads/main/screenshots/brix.png "BRIX in Chip 8")
 
 ## Building
 
