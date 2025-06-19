@@ -1,0 +1,18 @@
+# games directory
+/games/
+
+# build artifacts
+*.o
+*.elf
+*.exe
+*.out
+
+# macOS system files
+.DS_Store
+
+# Ignore other common folders
+/build/
+/cmake-build-*/
+
+# VS Code settings
+.vscode/ 

@@ -119,8 +119,10 @@ int main(int argc, char** argv) {
             }
         }
 
-        // 7b) Emulate one cycle (fetch-decode-execute)
-        chip8.emulateCycle();
+        // 7b) Emulate multiple cycles (fetch-decode-execute)
+        for (int i = 0; i < 10; ++i) {
+            chip8.emulateCycle();
+        }
 
         // 7c) If a draw was requested, update the texture & renderer
         if (chip8.drawFlag) {
@@ -188,20 +190,20 @@ int main(int argc, char** argv) {
         SDL_CreateRenderer gives us a hardware‑accelerated 2D renderer.
 
  6. Streaming texture:
-        We allocate an off‑screen 64×32 RGBA texture. On each draw‑frame we’ll memcpy our mono‑pixel data into this and let SDL scale it for us.
+        We allocate an off-screen 64×32 RGBA texture. On each draw-frame we'll memcpy our mono-pixel data into this and let SDL scale it for us.
 
  7. Main emulation loop:
-    a. Input: pump the SDL event queue. Map physical keys (1,2,3,4,Q,W… etc.) into the CHIP‑8’s 16‑key keypad array.
-    b. Emulate cycle: fetch the next 2‑byte opcode from pc, decode and execute it—this may alter registers, memory, PC, and set drawFlag if it’s a 00E0 or DXYN.
+    a. Input: pump the SDL event queue. Map physical keys (1,2,3,4,Q,W... etc.) into the CHIP-8's 16-key keypad array.
+    b. Emulate multiple cycles: fetch the next 2-byte opcode from pc, decode and execute it—this may alter registers, memory, PC, and set drawFlag if it's a 00E0 or DXYN.
     c. Draw: when drawFlag is true, we lock our texture, write white or black pixels based on chip8.gfx[], unlock it, then clear & copy the texture to the render target.
         c1. in the Draw loop:
             - chip8.gfx[] → is a 1D array of 64×32 entries, each 0 or 1 (contains the updated screen buffer) 
-            - pixels → a pointer to the first pixel’s memory, typed here as uint32_t* since each pixel is 4 bytes (RGBA8888).
-            - pitch → the number of bytes per row of the texture (64 pixels × 4 bytes = 256, but SDL may pad rows to align).
-            - pitch/4 = number of pixels per row = 256 bytes / 4 bytes_per_pixel = 64.
+            - pixels → a pointer to the first pixel's memory, typed here as uint32_t* since each pixel is 4 bytes (RGBA8888).
+            - pitch → the number of bytes per row of the texture (64 pixels × 4 bytes = 256, but SDL may pad rows to align).
+            - pitch/4 = number of pixels per row = 256 bytes / 4 bytes_per_pixel = 64.
             - (Converts to 0 → false → black, 1 → true → white)
-    d. Timers: decrement delay_timer and sound_timer if they’re above zero. If sound_timer > 0, you’d also yank out an SDL audio callback to play a square‑wave beep.
-    e. Frame cap: measure how long this loop took and delay the remainder of ~16 ms so the entire loop runs at ≈60 Hz.
+    d. Timers: decrement delay_timer and sound_timer if they're above zero. If sound_timer > 0, you'd also yank out an SDL audio callback to play a square-wave beep.
+    e. Frame cap: measure how long this loop took and delay the remainder of ~16 ms so the entire loop runs at ≈60 Hz.
 
  8. Cleanup:
         Destroy the SDL texture, renderer, window, then call SDL_Quit() to release all subsystems before exiting.
