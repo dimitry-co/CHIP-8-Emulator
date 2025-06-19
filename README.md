@@ -1,6 +1,6 @@
 # CHIP-8 Emulator
 
-This is a simple CHIP-8 emulator written in C++. CHIP-8 is an interpreted programming language, developed by Joseph Weisbecker in the 1970s for 8-bit microcomputers. CHIP-8 programs run on a virtual machine that emulates the original hardware, making it easy to play classic games.
+This is a CHIP-8 emulator written in C++. CHIP-8 is an interpreted programming language created by Joseph Weisbecker in the 1970s for 8-bit microcomputers. CHIP-8 programs are run using a CHIP-8 virtual machine.
 
 [Learn more about CHIP-8 on Wikipedia.](https://en.wikipedia.org/wiki/CHIP-8)
 
