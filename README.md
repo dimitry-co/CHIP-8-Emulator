@@ -40,7 +40,7 @@ This will produce an executable named `chip8.elf`.
 You need to provide the path to a ROM file as an argument.  
 A collection of CHIP-8 games is provided in the `roms` directory (sourced from [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html)).
 
-For example, to play PONG:
+For example, to play INVADERS:
 ```sh
 ./chip8.elf roms/INVADERS
 ```
