@@ -69,7 +69,7 @@ The original CHIP-8 had a hexadecimal keypad (0–9, A–F). The key mapping in 
 | `F`        | `V`          |
 
 The `roms/` directory contains a collection of public domain and open-source CHIP-8 games.  
-These ROMs were sourced from [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html)
+These ROMs were sourced from [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html).
 
 ## License
 
