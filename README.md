@@ -38,7 +38,7 @@ This will produce an executable named `chip8.elf`.
 ## Running
 
 You need to provide the path to a ROM file as an argument.  
-A collection of CHIP-8 games is provided in the `roms` directory (sourced [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html)).
+A collection of CHIP-8 games is provided in the `roms` directory (sourced from [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html)).
 
 For example, to play PONG:
 ```sh
@@ -68,8 +68,6 @@ The original CHIP-8 had a hexadecimal keypad (0–9, A–F). The key mapping in 
 | `E`        | `F`          |
 | `F`        | `V`          |
 
-The `roms/` directory contains a collection of public domain and open-source CHIP-8 games.  
-These ROMs were sourced from [Zophar's Domain](https://www.zophar.net/pdroms/chip8/chip-8-games-pack.html).
 
 ## License
 
