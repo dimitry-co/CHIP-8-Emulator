@@ -4,6 +4,8 @@
 #include <fstream>   // for std::ifstream
 #include <iostream>  // for std::cerr
 #include "chip8.h"
+#include <SDL.h>
+#include <atomic>
 
 static constexpr int SCREEN_W = 64;
 static constexpr int SCREEN_H = 32;
@@ -27,6 +29,7 @@ static const uint8_t fontset[80] = {
     0xF0, 0x80, 0xF0, 0x80, 0xF0, //E
     0xF0, 0x80, 0xF0, 0x80, 0x80  //F
 };
+
 
 // Constructor
 Chip8::Chip8() { 
@@ -89,7 +92,7 @@ bool Chip8::loadApplication(const std::string& filepath) {
     // 3) Go back to start and read ROM into memory starting at 0x200
     file.seekg(0, std::ios::beg);
     auto dst = memory.data() + 0x200;             // uint8_t*
-    auto ptr = reinterpret_cast<char*>(dst);      // tell read() “here’s a char*”
+    auto ptr = reinterpret_cast<char*>(dst);      // tell read() "here's a char*"
     file.read(ptr, romSize);                     
     if (file.fail()) {
         return false;
@@ -124,9 +127,12 @@ void Chip8::updateTimers() {
 
 }
 
-// TODO: replace with actual sound. The audio callback
-void Chip8::startBeep() { /* silent stub */ }
-void Chip8::stopBeep()  { /* silent stub */ } 
+void Chip8::startBeep() {
+    audio.StartBeep();
+}
+void Chip8::stopBeep()  {
+    audio.StopBeep();
+}
 
 void Chip8::emulateCycle() {
     // 1) Fetch next opcode (big-indian two bytes)

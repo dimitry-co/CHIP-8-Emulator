@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <cstdint>
+#include "audio.h"
 
 class Chip8 {
     public:
@@ -9,6 +10,7 @@ class Chip8 {
         bool loadApplication(const std::string& filepath);      // load ROM at 0x200
         void emulateCycle();                                    // fetch-decode-execute one opcode
         void updateTimers();                                    // decrement delay & sound @60 Hz
+        bool initAudio() { return audio.Initialize(); }         // Initialize audio system
 
         // public state consumed by main.cpp
         std::array<uint8_t, 64 * 32> gfx;           // Display buffer of 2048 pixels (0=off, 1=on)
@@ -29,6 +31,7 @@ class Chip8 {
         uint8_t delay_timer = 0;            // Delay timer (decrement at 60 Hz)
         uint8_t sound_timer = 0;            // Sound timer (decrement at 60 Hz)
 
+        Audio audio;
         bool isBeeping = false;
         void startBeep();
         void stopBeep();

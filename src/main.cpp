@@ -57,6 +57,13 @@ int main(int argc, char** argv) {
         return 1;
     }
 
+    // 3.5) Initialize audio system
+    if (!chip8.initAudio()) {
+        std::cerr << "Failed to initialize audio\n";
+        SDL_Quit();
+        return 1;
+    }
+
     // 4) Create window (640×320 window, scaled 10×)
     SDL_Window* window = SDL_CreateWindow(
         "CHIP-8 Emulator",
@@ -110,7 +117,6 @@ int main(int argc, char** argv) {
                 int key = mapSDLKeyToChip8(event.key.keysym.sym);
                 if (key >= 0) {
                     chip8.keypad[key] = (event.type == SDL_KEYDOWN);
-                    std::cout << "Key " << key << " is " << (event.type == SDL_KEYDOWN ? "pressed" : "released") << std::endl;
                 }
                 // optional: ESC to quit
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
